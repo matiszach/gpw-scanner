@@ -1,7 +1,7 @@
 # gpw-scanner
 A program that generates a weekly summary of stock market and sends it via email
 
-# Inallation
+# Installation
 First, clone the repository to your local machine using the following command:
 ```
 git clone https://github.com/matiszach/gpw-scanner.git
