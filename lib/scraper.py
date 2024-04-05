@@ -21,5 +21,3 @@ def get_data(date):
     df = pd.DataFrame(data, index=tickers,
                       columns=['open', 'max', 'min', 'close', 'change', 'stock_vol', 'opers', 'vol'])
     return df, tickers
-
-
