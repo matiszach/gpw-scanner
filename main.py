@@ -21,7 +21,7 @@ tickers = gpw.get_inside_bars(pre, curr, tickers)
 df = gpw.get_inside_bars_strategy(pre, curr, tickers)
 files = mailing.make_table(df)
 
-if os.getenv("SEND") == 'YES':
+if os.getenv("SEND") == 'Yes':
     content = ("W tym tygodniu inside bar wystąpił na " + str(len(tickers))
                + " spółkach z obrotem co najmniej " + str(min_volume) + "k PLN.")
 
