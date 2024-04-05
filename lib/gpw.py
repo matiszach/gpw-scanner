@@ -7,7 +7,7 @@ import pandas as pd
 def init():
     curr = manip.periodic_candle(manip.this_friday(date.today()), 5)
     pre = manip.periodic_candle(manip.this_friday(date.today() - timedelta(7)), 5)
-    tickers = manip.get_tickers(manip.this_friday(date.today()))
+    tickers = manip.get_2weeks_tickers()
     return pre, curr, tickers
 
 
