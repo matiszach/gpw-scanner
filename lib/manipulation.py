@@ -1,6 +1,6 @@
 import lib.scraper as scraper
 from datetime import date, timedelta
-
+import numpy as np
 
 def x_days_ago(days):
     return (date.today() - timedelta(days=days)).strftime('%d-%m-%Y')
@@ -12,7 +12,13 @@ def get_tickers(date_point=date.today()):
         df, tickers = scraper.get_data(date_point)
         date_point -= timedelta(days=1)
 
-    return tickers
+    return [ticker for ticker in tickers if type(df['open'][ticker]) == np.float64]
+
+
+def get_2weeks_tickers():
+    curr = get_tickers()
+    pre = get_tickers(date.today() - timedelta(days=7))
+    return [ticker for ticker in curr if ticker in pre]
 
 
 def periodic_candle(end_day, no_days):
@@ -28,7 +34,8 @@ def periodic_candle(end_day, no_days):
             ans = df[:]
         else:
             if len(last_tickers) != 0:
-                tickers = [ticker for ticker in tickers if ticker in last_tickers]
+                tickers = [ticker for ticker in tickers if ticker in last_tickers and type(df['open'][ticker]) == np.float64]
+                print(tickers)
 
             for ticker in tickers:
                 ans.loc[ticker, 'close'] = df['close'][ticker]
