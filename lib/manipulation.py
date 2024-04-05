@@ -35,7 +35,6 @@ def periodic_candle(end_day, no_days):
         else:
             if len(last_tickers) != 0:
                 tickers = [ticker for ticker in tickers if ticker in last_tickers and type(df['open'][ticker]) == np.float64]
-                print(tickers)
 
             for ticker in tickers:
                 ans.loc[ticker, 'close'] = df['close'][ticker]
