@@ -1,0 +1,8 @@
+matplotlib
+python-dotenv
+datetime
+pandas
+requests
+lxml
+bs4
+numpy
